@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSDOM + Mock</title>
+  </head>
+  <body>
+    <div id="app">
+      <form id="newTodoForm">
+        <div>
+          <input type="text" id="newTodoText" />
+          <button>Skapa</button>
+          <button type="button" id="clearTodos">Rensa lista</button>
+        </div>
+        <div id="error" class="error"></div>
+      </form>
+      <ul id="todos" class="todo"></ul>
+    </div>
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>

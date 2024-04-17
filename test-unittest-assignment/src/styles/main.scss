@@ -1,0 +1,47 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo {
+  list-style: none;
+  padding: 0;
+  width: 50%;
+
+  &__text {
+    margin: 20px 0;
+    padding: 5px 0;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    &--done {
+      text-decoration: line-through;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error {
+  color: red;
+  font-size: 1.1em;
+  display: none;
+}
+
+.show {
+  display: block;
+}
