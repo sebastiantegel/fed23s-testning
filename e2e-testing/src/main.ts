@@ -1,17 +1,23 @@
+import { IApiResponse } from "./models/IApiResponse";
 import { Todo } from "./models/Todo";
 import "./style.css";
 
 const todos: Todo[] = [];
 
-document.getElementById("todoForm")?.addEventListener("submit", (e) => {
+document.getElementById("todoForm")?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const todoText = (document.getElementById("todoText") as HTMLInputElement)
     .value;
 
   if (todoText.length > 0) {
-    const todo = new Todo(todoText);
-    todos.push(todo);
+    const response = await fetch("http://awesomeurl/" + todoText, {
+      method: "POST",
+    });
+    if (response.status === 201) {
+      const todo = new Todo(todoText);
+      todos.push(todo);
+    }
   }
 
   createHtml(todos);
@@ -38,3 +44,10 @@ const createHtml = (todos: Todo[]) => {
     todoList.appendChild(liTag);
   }
 };
+
+document.getElementById("fetchData")?.addEventListener("click", async () => {
+  const response = await fetch("http://awesomeurl");
+  const data: IApiResponse = await response.json();
+
+  createHtml(data.todos);
+});
